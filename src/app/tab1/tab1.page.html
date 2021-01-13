@@ -1,17 +1,71 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Nuevo Estudiante
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<ion-content color="primary" padding>
+  <ion-grid>
+      <form [formGroup]="myForm">
+          <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                  <div text-center>
+                      <h3>Login</h3>
+                  </div>
+                  <div padding>
+                      <ion-item>
+                          <ion-input type="text" formControlName="name"></ion-input>
+                          <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validateMessage.name">
+                                <div class="error-msg" *ngIf="myForm.get('name').hasError(validation.type) && (myForm.get('name').dirty || myForm.get('name').touched)">
+                                    <ion-icon name="alert-circle-outline"></ion-icon> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                      </ion-item>
+                      <ion-item>
+                          <ion-input type="text" formControlName="curp"></ion-input>
+                          <ng-container *ngFor="let validation of validateMessage.curp">
+                            <div class="error-msg" *ngIf="myForm.get('curp').hasError(validation.type) && (myForm.get('curp').dirty || myForm.get('curp').touched)">
+                                <ion-icon name="alert-circle-outline"></ion-icon> {{ validation.message }}
+                            </div>
+                        </ng-container>
+                      </ion-item>
+                      <ion-item>
+                          <ion-input type="text" formControlName="controlnumber"></ion-input>
+                          <ng-container *ngFor="let validation of validateMessage.controlnumber">
+                            <div class="error-msg" *ngIf="myForm.get('controlnumber').hasError(validation.type) && (myForm.get('controlnumber').dirty || myForm.get('controlnumber').touched)">
+                                <ion-icon name="alert-circle-outline"></ion-icon> {{ validation.message }}
+                            </div>
+                        </ng-container>
+                      </ion-item>
+                      <ion-item>
+                          <ion-input type="number" formControlName="age"></ion-input>
+                          <ng-container *ngFor="let validation of validateMessage.age">
+                            <div class="error-msg" *ngIf="myForm.get('age').hasError(validation.type) && (myForm.get('age').dirty || myForm.get('age').touched)">
+                                <ion-icon name="alert-circle-outline"></ion-icon> {{ validation.message }}
+                            </div>
+                        </ng-container>
+                      </ion-item>
+                      <ion-item>
+                          <ion-label>Activo</ion-label>
+                          <ion-toggle formControlName="active" color="secondary"></ion-toggle>
+                          <ng-container *ngFor="let validation of validateMessage.active">
+                            <div class="error-msg" *ngIf="myForm.get('active').hasError(validation.type) && (myForm.get('active').dirty || myForm.get('active').touched)">
+                                <ion-icon name="alert-circle-outline"></ion-icon> {{ validation.message }}
+                            </div>
+                        </ng-container>
+                      </ion-item>
+                  </div>
+                  <div padding>
+                      <ion-button size="large" type="button" [disabled]="!myForm.valid" (click)="create()" expand="block">
+                          Guardar
+                      </ion-button>
+                  </div>
+              </ion-col>
+          </ion-row>
+      </form>
+  </ion-grid>
 </ion-content>
