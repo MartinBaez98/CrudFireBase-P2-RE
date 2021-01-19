@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Estudiante } from 'src/app/models/estudiante';
 import { EstudianteService } from 'src/app/services/estudiante.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -15,7 +16,7 @@ export class Tab1Page implements OnInit {
   public student:Estudiante;
   public validateMessage;
 
-  constructor(private studentService: EstudianteService, private fb:FormBuilder) {
+  constructor(private studentService: EstudianteService, private fb:FormBuilder,public toastController: ToastController) {
     this.validateMessage = {
       name: [
         { type: 'required',  message: 'Nombre, es un campo obligatorio.' },
@@ -40,6 +41,14 @@ export class Tab1Page implements OnInit {
     };
    }
 
+   async messageToast(message:string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2500
+    });
+    toast.present();
+  }
+
    create(){
     this.student = {
       name:this.myForm.controls.name.value,
@@ -49,6 +58,7 @@ export class Tab1Page implements OnInit {
       active:this.myForm.controls.active.value
     }
     this.studentService.createStudent(this.student);
+    this.messageToast("Alumno añadido");
   }
 
   ngOnInit() {

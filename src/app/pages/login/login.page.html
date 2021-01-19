@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Iniciar sesión </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card style="margin-left: 10%; margin-right: 10%;  text-align: center;">
+      <ion-label><img src="https://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" width="80px"></ion-label>
+      <p></p>
+      <form [formGroup]="myForm">
+        <ion-item>
+            <ion-label position="floating">Correo electrónico</ion-label>
+            <ion-input formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+          <ion-button (click)="join()" expand="block" color="secondary">
+              Iniciar sesión
+          </ion-button>
+      </form>
+  </ion-card>
+</ion-content>
