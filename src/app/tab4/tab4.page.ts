@@ -4,11 +4,11 @@ import { EstudianteService } from "../services/estudiante.service";
 import { Estudiante } from '../models/estudiante';
 
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss']
+  selector: 'app-tab4',
+  templateUrl: 'tab4.page.html',
+  styleUrls: ['tab4.page.scss'],
 })
-export class Tab3Page {
+export class Tab4Page {
 
   public students:Estudiante[];
 

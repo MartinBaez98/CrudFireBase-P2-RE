@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
-      <ion-title>Estudiantes Activos</ion-title>
+      <ion-title>Estudiantes Inactivos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-list>
       <ion-item-sliding *ngFor="let student of students">
-          <div *ngIf="student.active">
+          <div *ngIf="!student.active">
               <ion-item-options side="start">
                   <ion-item-option color="secondary">
                       <ion-icon name="checkmark"></ion-icon>
