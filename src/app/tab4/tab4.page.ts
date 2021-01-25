@@ -11,6 +11,7 @@ import { Estudiante } from '../models/estudiante';
 export class Tab4Page {
 
   public students:Estudiante[];
+  public ind: boolean[];
 
   constructor(private service:EstudianteService) {
     this.service.getStudents().subscribe(data=>{
@@ -24,7 +25,12 @@ export class Tab4Page {
           active:e.payload.doc.get("active")
         }as Estudiante
       })
+      this.ind = new Array(this.students.length).fill(false);
     })
+  }
+
+  showInformation(i:number){
+    this.ind[i]=!this.ind[i];
   }
 
 }
